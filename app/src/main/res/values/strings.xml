@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">기도 한줄 기록</string>
+    <string name="title_prayer">기도</string>
+    <string name="title_gratitude">감사</string>
+    <string name="empty_state">아직 기록이 없어요.\n하단 + 버튼으로 오늘의 한 줄을 남겨보세요.</string>
+    <string name="add_entry_title">한 줄 기록</string>
+    <string name="add_entry_prayer_hint">예) 오늘도 평안을 지켜달라고 기도합니다.</string>
+    <string name="add_entry_gratitude_hint">예) 오늘 동료가 도와줘서 고마웠어요.</string>
+    <string name="save">저장</string>
+    <string name="cancel">취소</string>
+</resources>
+
