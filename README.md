@@ -36,8 +36,20 @@ cd sunlit-prayer-journal
 - `.github/workflows/release.yml`
 - `workflow_dispatch` 또는 `v*` 태그 push 시 워크플로우 실행
 - 빌드 결과 APK는 GitHub Actions Artifact `pray-journal-release-apk`로 업로드
+- `v*` 태그 push 시 GitHub Release도 자동 생성되며, 릴리스 노트와 APK가 함께 업로드됩니다.
 
 ## 최소 실행 환경
 
 - JDK 17
 - Android SDK (`compileSdk 34`, `targetSdk 34`, `minSdk 24`)
+
+## 릴리스 노트 템플릿
+
+- `docs/RELEASE_NOTES_TEMPLATE.md`에서 릴리스 노트 포맷을 관리합니다.
+- 자동 릴리스 노트는 `docs/RELEASE_NOTES_TEMPLATE.md`를 참고해 수정 후 워크플로우에서 반영 가능합니다.
+
+## 서명 키 정책
+
+- Play Store 업로드는 현재 진행하지 않습니다.
+- GitHub Release에 올릴 APK는 서명이 가능한 경우 워크플로우 비밀키를 통해 Release Signing이 적용됩니다.
+- 서명 키 운영 규칙은 `docs/PLAYSTORE_SIGNING_POLICY.md`를 참고하세요.

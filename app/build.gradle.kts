@@ -8,6 +8,28 @@ android {
     namespace = "com.sunlit.prayerjournal"
     compileSdk = 34
 
+    val releaseKeystoreFile = System.getenv("RELEASE_KEYSTORE_FILE")
+    val releaseKeyAlias = System.getenv("RELEASE_KEY_ALIAS")
+    val releaseKeystorePassword = System.getenv("RELEASE_KEYSTORE_PASSWORD")
+    val releaseKeyPassword = System.getenv("RELEASE_KEY_PASSWORD")
+
+    val hasReleaseSigning = !releaseKeystoreFile.isNullOrBlank() &&
+        !releaseKeyAlias.isNullOrBlank() &&
+        !releaseKeystorePassword.isNullOrBlank() &&
+        !releaseKeyPassword.isNullOrBlank() &&
+        java.io.File(releaseKeystoreFile).exists()
+
+    signingConfigs {
+        if (hasReleaseSigning) {
+            create("release") {
+                storeFile = file(releaseKeystoreFile)
+                storePassword = releaseKeystorePassword
+                keyAlias = releaseKeyAlias
+                keyPassword = releaseKeyPassword
+            }
+        }
+    }
+
     defaultConfig {
         applicationId = "com.sunlit.prayerjournal"
         minSdk = 24
@@ -29,6 +51,9 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            if (hasReleaseSigning) {
+                signingConfig = signingConfigs.getByName("release")
+            }
         }
     }
 
