@@ -1,8 +1,8 @@
-package com.sunlit.prayerjournal.data
+﻿package com.sunlit.prayerjournal.data
 
 enum class JournalCategory(val displayName: String, val hint: String) {
-    PRAYER("기도", "예) 오늘 하루를 지켜주셔서 감사합니다."),
-    GRATITUDE("감사", "예) 오늘 동료가 도와줘서 고마웠어요.")
+    PRAYER("기도", "오늘의 기도 제목을 한 줄로 적어보세요."),
+    GRATITUDE("감사", "오늘 고마웠던 순간을 한 줄로 적어보세요.")
 }
 
 data class JournalEntry(
@@ -15,4 +15,3 @@ data class JournalEntry(
         get() = java.text.SimpleDateFormat("MM/dd (E) HH:mm", java.util.Locale.getDefault())
             .format(createdAtMillis)
 }
-
